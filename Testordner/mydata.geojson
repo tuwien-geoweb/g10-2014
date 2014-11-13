@@ -4,26 +4,39 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Teilnehmer 1"
+        "Name": "Witold Urbanski"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          16.3916015625,
-          48.21735290928554
+          16.37015461921692,
+          48.19849117879465
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "Name": "Teilnehmer 2"
+        "Name": "Sascha Moschitz"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          16.370036602020264,
-          48.19993572672881
+          16.369500160217285,
+          48.19840536278412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Sebastian Vcelar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.36990785598755,
+          48.198019188957936
         ]
       }
     }
