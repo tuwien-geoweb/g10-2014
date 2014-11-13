@@ -1,0 +1,13 @@
+{
+  "type": "FeatureCollection",
+  "features": [{
+    "type": "Feature",
+    "properties": {
+      "Name": "Andreas Hocevar"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [16.3916015625, 48.21735290928554]
+    }
+  }]
+}
