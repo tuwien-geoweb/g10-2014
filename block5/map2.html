@@ -42,7 +42,7 @@
                 })
               });
               var geolocation = new ol.Geolocation({
-                projection: 'EPSG:4326'
+                projection: 'EPSG:3857'
               });
                 geolocation.setTracking(true);
                 geolocation.on('change:position', function() {
