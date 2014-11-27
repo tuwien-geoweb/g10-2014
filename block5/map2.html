@@ -33,16 +33,16 @@
     <script type="text/javascript">
     
       var map = new ol.Map({
-                target: 'map',
-                layers: [
-                  new ol.layer.Tile({
-                    source: new ol.source.MapQuest({layer: 'osm'})
-                  }),
-                ],
-                view: new ol.View({
-                  center: ol.proj.transform([16.3, 48.2], 'EPSG:4326', 'EPSG:3857'),
-                  zoom: 11
-                })
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.MapQuest({layer: 'osm'})
+          }),
+        ],
+        view: new ol.View({
+          center: ol.proj.transform([16.3, 48.2], 'EPSG:4326', 'EPSG:3857'),
+          zoom: 11
+        })
               });
               
               var geolocation = new ol.Geolocation({
@@ -58,12 +58,12 @@
      
        form.onsubmit = function search(evt) {
          evt.preventDefault();
-                var url = 'http://nominatim.openstreetmap.org/search?&format=json&q= + form.query.value';  
+                var url = 'http://nominatim.openstreetmap.org/search?&format=json&q=' + form.query.value;  
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", url, true);
                 xhr.onload = function() {
                    var result = JSON.parse(xhr.responseText);
-                  var position = [parseFloat(result[0].lon), parseFloat(result[0].lat)];
+                  var position = [result[0].lon, result[0].lat];
                   map.getView().setCenter(ol.proj.transform(position, 'EPSG:4326', 'EPSG:3857'));
                 };
       xhr.send();
