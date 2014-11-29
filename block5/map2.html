@@ -30,7 +30,7 @@
         <form id="search">
           Search: <input name="query" type="text" size="40">
         
-        <input name="reset-location" type="reset" value="Reset-View">
+        <input name="reset-location" type="reset" value="Reset-View" onclick="Javascript:reset-view();">
         </form>
       </div>
     </div>
@@ -57,11 +57,12 @@
           maxZoom: 19,
         })
       });
-              
+       
+      function reset-view() {       
       var geolocation = new ol.Geolocation({
         projection: 'EPSG:3857'
       });
-      
+      }
       geolocation.setTracking(true);
       geolocation.on('change:position', function() {
       geolocation.setTracking(false);
