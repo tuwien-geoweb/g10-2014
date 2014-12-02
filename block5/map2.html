@@ -30,7 +30,7 @@
         <form id="search">
           Search: <input name="query" type="text" size="40">
         
-        <input name="reset-location" type="reset" value="Reset-View" onclick="Javascript:reset();">
+        <input name="reset-location" type="reset" value="Reset-View" onclick="Javascript:zuruck();">
         </form>
       </div>
     </div>
@@ -58,7 +58,7 @@
         })
       });
        
-      function reset() {       
+      function zuruck() {       
       var geolocation = new ol.Geolocation({
         projection: 'EPSG:3857'
       });
@@ -72,7 +72,7 @@
       }        
      var form = document.getElementById('search'); 
      
-     reset();
+     zuruck();
      form.onsubmit = function search(evt) {
       evt.preventDefault();
       var url = 'http://nominatim.openstreetmap.org/search?&format=json&q=' + form.query.value;  
