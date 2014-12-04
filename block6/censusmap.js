@@ -34,3 +34,9 @@ $.get("data/DataDict.txt", function(response) {
   });
 });
 
+// Add behaviour to dropdown
+$('#topics').change(function() {
+  wmsLayer.getSource().updateParams({
+    'viewparams': 'column:' + $('#topics>option:selected').val()
+  });
+});
