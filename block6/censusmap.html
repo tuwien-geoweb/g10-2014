@@ -19,28 +19,66 @@
       #map {
         padding-top: 50px;
       }
-      .legend {
+      .overlay {
         position: absolute;
         z-index: 1;
         left: 10px;
         bottom: 10px;
         opacity: 0.6;
       }
-       .popover {
-        max-width: 480px;
-      }
-      .popover-title {
-        float: right;
-        background: none;
-        border: 0;
-        cursor: pointer;
-      }
-      .popover-content iframe {
-        width: 440px;
-        height: 120px;
-        border: 0;
-      }
+      .ol-popup {
+  display: none;
+  position: absolute;
+  background-color: white;
+  -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+}
+.ol-popup:after, .ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.ol-popup:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+.ol-popup:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+.ol-popup .close {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+}
+.ol-popup iframe {
+  width: 400px;
+  height: 120px;
+  border: 0;
+}
 
+.navbar-form .input-group {
+  width: 300px;
+  padding-right: 20px;
+  float: left;
+}
+.navbar-form .form-group {
+  width: 450px;
+}
     </style>
   </head>
   <body>
