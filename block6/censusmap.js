@@ -83,3 +83,8 @@ form.onsubmit = function(evt) {
   xhr.send();
   evt.preventDefault();
 };
+view: new ol.View({
+  center: [-10764594.0, 4523072.0],
+  zoom: 5,
+  maxZoom: 18
+})
