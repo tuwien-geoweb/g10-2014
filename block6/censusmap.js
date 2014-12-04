@@ -33,9 +33,4 @@ $.get("data/DataDict.txt", function(response) {
       .html(line.substr(10, 105).trim()));
   });
 });
-// Add behaviour to dropdown
-//$('#topics').change(function() {
- // wmsLayer.getSource().updateParams({
- //   'viewparams': 'column:' + $('#topics>option:selected').val()
-//  });
-//});
+
