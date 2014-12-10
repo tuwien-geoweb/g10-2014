@@ -30,8 +30,8 @@ Released   : 20081210
       .legend {
         position: absolute;
         z-index: 1;
-        left: 712px;
-        bottom: 310px;
+        left: 590px;
+        bottom: 330px;
         opacity: 0.6;
       }
        .popover {
@@ -54,7 +54,10 @@ Released   : 20081210
         float: left;
       }
       .navbar-form .form-group {
-        width: 400px;
+        width: 500px;
+      }
+      .navbar-form .btn-default {
+          padding-right: 20px;
       }
     </style>
 </head>
@@ -109,15 +112,16 @@ Released   : 20081210
         <a class="navbar-brand" href="#">Wohnstandortanalyse</a>
       </div>
       <form class="navbar-form navbar-right">
-        <div class="form-group">
+
+          <div class="form-group">
           <select id="topics" class="form-control"></select>
         </div>
         <div class="input-group">
           <input type="text" class="form-control" name="query">
               <span class="input-group-btn">
                  <button class="btn btn-default" type="submit">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
+                    <span class="glyphicon glyphicon-search"></span>
+                 </button>
               </span>
         </div>
       </form>
