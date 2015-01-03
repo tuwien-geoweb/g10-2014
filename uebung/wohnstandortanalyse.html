@@ -17,16 +17,56 @@ Released   : 20081210
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 <title>WEBGIS | G10</title>
+      <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <link href="bootstrap.css" rel="stylesheet"/>
 <link href="bootswatch.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://openlayers.org/en/v3.0.0/css/ol.css" type="text/css">
+    <script src="http://openlayers.org/en/v3.0.0/build/ol.js" type="text/javascript"></script>
+    <style>
+      html, body, #map {
+        height: 100%;
+      }
+      
+      .legend {
+        position: absolute;
+        z-index: 1;
+        left: 590px;
+        bottom: 330px;
+        opacity: 0.6;
+      }
+       .popover {
+        max-width: 480px;
+      }
+      .popover-title {
+        float: right;
+        background: none;
+        border: 0;
+        cursor: pointer;
+      }
+      .popover-content iframe {
+        width: 440px;
+        height: 120px;
+        border: 0;
+      }
+      .navbar-form .input-group {
+        width: 300px;
+        padding-right: 20px;
+        float: left;
+      }
+      .navbar-form .form-group {
+        width: 500px;
+      }
+      .navbar-form .btn-default {
+          padding-right: 20px;
+      }
+    </style>
 </head>
 
 <body>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <a href="home.html" class="navbar-brand">Web - GIS</a>
-   
+      <a href="" class="navbar-brand">Web - GIS</a>
     </div>
     <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -50,15 +90,12 @@ Released   : 20081210
             <li>
               <a href="wohnstandortanalyse.html">Wohnstandortanalyse</a>
             </li>
-              
           </ul>
-
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://student.ifip.tuwien.ac.at/geoweb/2014/g10/home.php" target="hauptbereich">INTRANET</a></li>
-            <li><a href="http://tuwien-geoweb.github.io/g10-2014/block4/feedback_map.html" target="_blank">FEEDBACK</a></li>
+            <li><a href="http://student.ifip.tuwien.ac.at/geoweb/2014/intranet" target="_blank">INTRANET</a></li>
+            <li><a href="feedback.html">FEEDBACK</a></li>
             <li><a href="impressum.html">IMPRESSUM</a></li>
           </ul>
-
         </div>  
   </div>    
 </div>
@@ -67,18 +104,48 @@ Released   : 20081210
         <div class="row">
           <div class="col-lg-12">
               <img src="images/stadtkarte.gif">
-          </div> 
+          </div>     
         </div>
-        <div class="row">
-          <div class="col-lg-9">
-              <p class="lead"><br>Willkommen bei WEBGIS - Gruppe 10</p>
-            <p>Diese Website wurde im Zuge des Wahlmoduls 10 in der Lehrveranstaltung "Webbasierte Geoinformation im Planungsprozess" (280.290) an der TU Wien im Wintersemester 2014 erstellt.</p>
-          </div> 
-        </div>
-    </div> 
-</div>
+        <br>
+<div class="navbar navbar">
+  <div class="navbar-header">
+        <a class="navbar-brand" href="#">Wohnstandortanalyse</a>
+      </div>
+      <form class="navbar-form navbar-right">
 
+          <div class="form-group">
+          <select id="topics" class="form-control"></select>
+        </div>
+        <div class="input-group">
+          <input type="text" class="form-control" name="query">
+              <span class="input-group-btn">
+                 <button class="btn btn-default" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                 </button>
+              </span>
+        </div>
+      </form>
+  
+</div>
+        <div id="map">
+      <!-- GetLegendGraphic, customized with some LEGEND_OPTIONS -->
+            <img class="legend img-rounded" src="http://student.ifip.tuwien.ac.at/geoserver/g10_2014/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=26&HEIGHT=18&STRICT=false&style=g10_stddev&LEGEND_OPTIONS=fontName:sans-serif;fontSize:11;fontAntiAliasing:true;fontStyle:bold;fontColor:0xFFFFFF;bgColor:0x000000">
+          <div id="popup" data-html="true" data-placement="auto" data-title="&times;">
+            <div id="popup-content" style="display:none">
+              <iframe seamless></iframe>
+              <form class="input-group">
+              <input type="text" class="form-control" name="comment">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Comment</button>
+                </span>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="bootstrap.js"></script>
+        <script type="text/javascript" src="census_map.js"></script>
     </body>
 </html>
