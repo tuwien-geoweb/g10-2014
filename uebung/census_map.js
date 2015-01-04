@@ -36,6 +36,66 @@ source: new ol.source.GeoJSON({
     })
 });
 
+var wlan = new ol.layer.Vector({
+source: new ol.source.GeoJSON({
+    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:WLANWIENATOGDPoint&outputFormat=json',
+    projection: 'EPSG:3857'
+  }),
+    style: new ol.style.Style({
+       image: new ol.style.Icon({
+          src: 'images/wlan.png',
+        })
+    })
+});
+
+var markt = new ol.layer.Vector({
+source: new ol.source.GeoJSON({
+    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:MAERKTEOGDPoint&outputFormat=json',
+    projection: 'EPSG:3857'
+  }),
+    style: new ol.style.Style({
+       image: new ol.style.Icon({
+          src: 'images/markt.png',
+        })
+    })
+});
+
+var citybike = new ol.layer.Vector({
+source: new ol.source.GeoJSON({
+    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:CITYBIKEOGDPoint&outputFormat=json',
+    projection: 'EPSG:3857'
+  }),
+    style: new ol.style.Style({
+       image: new ol.style.Icon({
+          src: 'images/citybike.png',
+        })
+    })
+});
+
+var spielplatz = new ol.layer.Vector({
+source: new ol.source.GeoJSON({
+    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:SPIELPLATZOGDPoint&outputFormat=json',
+    projection: 'EPSG:3857'
+  }),
+    style: new ol.style.Style({
+       image: new ol.style.Icon({
+          src: 'images/spielplatz.png',
+        })
+    })
+});
+
+var sportplatz = new ol.layer.Vector({
+source: new ol.source.GeoJSON({
+    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:SPORTSTAETTENOGDPoint&outputFormat=json',
+    projection: 'EPSG:3857'
+  }),
+    style: new ol.style.Style({
+       image: new ol.style.Icon({
+          src: 'images/sportplatz.png',
+        })
+    })
+});
+
 
 // Map object
 olMap = new ol.Map({
@@ -148,5 +208,45 @@ document.getElementById('bildung').onclick = function(e){
     olMap.addLayer(bildung);
   }else{
     olMap.removeLayer(bildung);
+  }
+};
+
+document.getElementById('markt').onclick = function(e){
+  if(this.checked==1){
+    olMap.addLayer(markt);
+  }else{
+    olMap.removeLayer(markt);
+  }
+};
+
+document.getElementById('spielplatz').onclick = function(e){
+  if(this.checked==1){
+    olMap.addLayer(spielplatz);
+  }else{
+    olMap.removeLayer(spielplatz);
+  }
+};
+
+document.getElementById('sportplatz').onclick = function(e){
+  if(this.checked==1){
+    olMap.addLayer(sportplatz);
+  }else{
+    olMap.removeLayer(sportplatz);
+  }
+};
+
+document.getElementById('wlan').onclick = function(e){
+  if(this.checked==1){
+    olMap.addLayer(wlan);
+  }else{
+    olMap.removeLayer(wlan);
+  }
+};
+
+document.getElementById('citybike').onclick = function(e){
+  if(this.checked==1){
+    olMap.addLayer(citybike);
+  }else{
+    olMap.removeLayer(citybike);
   }
 };
