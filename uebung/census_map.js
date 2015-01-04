@@ -14,7 +14,15 @@ var wmsLayer = new ol.layer.Image({
 //Checkboxen
 var haltestellen = new ol.layer.Vector({
   source: new ol.source.Vector({
-    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:BEZIRKSGRENZEOGDPolygon&maxFeatures=50&outputFormat=json',
+    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:HALTESTELLEWLOGDPoint&maxFeatures=50&outputFormat=json',
+    parser: new ol.parser.GeoJSON()
+  }),
+  opacity: 0.6
+});
+
+var bildung = new ol.layer.Vector({
+  source: new ol.source.Vector({
+    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:SCHULEOGDPoint&maxFeatures=50&outputFormat=json',
     parser: new ol.parser.GeoJSON()
   }),
   opacity: 0.6
@@ -124,5 +132,13 @@ document.getElementById('haltestellen').onclick = function(e){
     olMap.addLayer(haltestellen);
   }else{
     olMap.removeLayer(haltestellen);
+  }
+};
+
+document.getElementById('bildung').onclick = function(e){
+  if(this.checked==1){
+    olMap.addLayer(bildung);
+  }else{
+    olMap.removeLayer(bildung);
   }
 };
