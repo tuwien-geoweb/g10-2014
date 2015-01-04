@@ -12,11 +12,10 @@ var wmsLayer = new ol.layer.Image({
 });
 
 //Checkboxen
-
-var haltestellen = new ol.layer.Image({
-  source: new ol.source.ImageWMS({
-    url: 'http://student.ifip.tuwien.ac.at/geoserver/wms',
-    params: {'LAYERS': 'g10_2014:HALTESTELLEWLOGDPoint'}
+var haltestellen = new ol.layer.Vector({
+  source: new ol.source.Vector({
+    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:BEZIRKSGRENZEOGDPolygon&maxFeatures=50&outputFormat=json',
+    parser: new ol.parser.GeoJSON()
   }),
   opacity: 0.6
 });
