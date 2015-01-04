@@ -13,7 +13,7 @@ var wmsLayer = new ol.layer.Image({
 
 //Checkboxen
 var haltestellen = new ol.layer.Vector({
-  source: new ol.source.GeoJSON({
+  source: new ol.source.TileWMS({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/wms',
     params: {'LAYERS': 'g10_2014:HALTESTELLEWLOGDPoint'}
   }),
