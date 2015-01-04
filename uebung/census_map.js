@@ -13,8 +13,8 @@ var wmsLayer = new ol.layer.Image({
 
 //Checkboxen
 
-var haltestellen = new ol.layer.Vector({
-  source: new ol.source.Vector({
+var haltestellen = new ol.layer.Image({
+  source: new ol.source.ImageWMS({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/wms',
     params: {'LAYERS': 'g10_2014:HALTESTELLEWLOGDPoint'}
   }),
@@ -120,7 +120,7 @@ view: new ol.View({
   maxZoom: 18
 })
 
-document.getElementById('featureHaltestellen').onclick = function(e){
+document.getElementById('haltestellen').onclick = function(e){
   if(this.checked==1){
     olMap.addLayer(haltestellen);
   }else{
