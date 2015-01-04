@@ -120,7 +120,7 @@ view: new ol.View({
   maxZoom: 18
 })
 
-document.getElementById('featurehaltestellen').onclick = function(e){
+document.getElementById('featureHaltestellen').onclick = function(e){
   if(this.checked==1){
     olMap.addLayer(haltestellen);
   }else{
