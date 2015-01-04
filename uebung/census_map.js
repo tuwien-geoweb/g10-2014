@@ -12,16 +12,11 @@ var wmsLayer = new ol.layer.Image({
 });
 
 //Checkboxen
-var haltestellen = new ol.layer.Vector({
+var haltestellen = new ol.layer.Image({
   source: new ol.source.ImageWMS({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/wms',
     params: {'LAYERS': 'g10_2014:HALTESTELLEWLOGDPoint'}
-  }),
-    style: new ol.style.Style({
-       image: new ol.style.Icon({
-          src: 'images/haltestelle.png',
-        })
-    })
+  })
 });
 
 var bildung = new ol.layer.Vector({
