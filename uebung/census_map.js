@@ -195,20 +195,6 @@ view: new ol.View({
   maxZoom: 18
 })
 
-function zuruck() {       
-          var geolocation = new ol.Geolocation({
-            projection: 'EPSG:3857'
-          });
-          geolocation.setTracking(true);
-          geolocation.on('change:position', function() {
-          geolocation.setTracking(false);
-          map.getView().setCenter(geolocation.getPosition());
-          marker.setGeometry(new ol.geom.Point(map.getView().getCenter()));
-          });
-      }   
-
-zuruck();
-
 document.getElementById('haltestellen').onclick = function(e){
   if(this.checked==1){
     olMap.addLayer(haltestellen);
