@@ -6,7 +6,7 @@ var osmLayer = new ol.layer.Tile({source: new ol.source.OSM()});
 var wmsLayer = new ol.layer.Image({
   source: new ol.source.ImageWMS({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/wms',
-    params: {'LAYERS': 'g10_2014:Haltestellen_g10,g10_2014:comments'}
+    params: {'LAYERS': 'g10_2014:normalized_data_vie,g10_2014:comments'}
   }),
   opacity: 0.6
 });
@@ -14,7 +14,7 @@ var wmsLayer = new ol.layer.Image({
 //Checkboxen
 var haltestellen = new ol.layer.Vector({
   source: new ol.source.GeoJSON({
-    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:HALTESTELLEWLOGDPoint&outputFormat=json',
+    url: 'student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:Haltestellen_g10&outputFormat=json',
     projection: 'EPSG:3857'
   }),
     style: new ol.style.Style({
