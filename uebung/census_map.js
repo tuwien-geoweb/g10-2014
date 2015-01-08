@@ -98,26 +98,11 @@ source: new ol.source.GeoJSON({
 
 
 // Map object
-var marker = new ol.Feature();
+
 olMap = new ol.Map({
   target: 'map',
   renderer: 'canvas',
-  layers: [osmLayer, wmsLayer,
-new ol.layer.Vector({
-source: new ol.source.Vector ({
-features: [marker]
-}),
-style: new ol.style.Style({
-image: new ol.style.Icon(({
-anchor: [0.5, 46],
-anchorXUnits: 'fraction',
-anchorYUnits: 'pixels',
-opacity: 0.75,
-src: 'http://student.ifip.tuwien.ac.at/geoweb/2014/g10/website_g10/red.png'
-}))
-})
-})
-],
+  layers: [osmLayer, wmsLayer],
   view: new ol.View({
   center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
   zoom: 11,
