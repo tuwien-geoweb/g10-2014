@@ -1,14 +1,14 @@
 Data_Item	Item_Description
-DISTRICT_POP_RATIO      Bezirksbevölkerung
-POP_DENSIT              Bevölkerungsdichte
-RATE_M                  Anteil Männlich
-RATE_F                  Anteil Weiblich
-SEX_RATIO               Sex_Ratio
-RATE_FOR_NATIONAL       Anteil österr. Staatsbürger
-RATE_FOR_BORN           Geburtenrate
-AVERAGE_AGE_M           Altersdurchschnitt Männlich
-AVERAGE_AGE_F           Altersdurchschnitt Weiblich
-WORKINGAGE_RATIO        Anteil der erwerbsfähigen Bevölkerung
-YOUTH_RATIO             Anteil jugendlicher Bevölkerung (unter 18)
-AGE_RATIO               Anteil Erwachsener (18-65)
-OLD_AGE_RATIO           Anteil Über 65-Jähriger
+DIST_P_RA Bezirksbevölkerung
+POP_DENSI Bevölkerungsdichte
+RATE_MALE Anteil Männlich
+RATE_FEMA Anteil Weiblich
+SEX_RATIO Sex_Ratio
+RATE_NATI Anteil österr. Staatsbürger
+RATE_BORN Geburtenrate
+AVG_AGE_M Altersdurchschnitt Männlich
+AVG_AGE_F Altersdurchschnitt Weiblich
+WRKAGE_RA Anteil der erwerbsfähigen Bevölkerung
+YTH_RATIO Anteil jugendlicher Bevölkerung (unter 18)
+AGE_RATIO Anteil Erwachsener (18-65)
+OLD_AG_RA Anteil Über 65-Jähriger
