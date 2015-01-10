@@ -14,7 +14,7 @@ var wmsLayer = new ol.layer.Image({
 //Checkboxen
 var haltestellen = new ol.layer.Vector({
   source: new ol.source.GeoJSON({
-    url: 'student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:Haltestellen_g10&outputFormat=json',
+    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:HALTESTELLEWLOGDPoint&outputFormat=json',
     projection: 'EPSG:3857'
   }),
     style: new ol.style.Style({
