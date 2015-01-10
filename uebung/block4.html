@@ -70,9 +70,9 @@ Released   : 20081210
             <br>
             <div id="map" class="col-md-6"></div>
             <div class="col-md-6"> 
-                <form action="javascript:submitForm();">
-                    <input type="radio" name="geschlecht" value="Frau"/> Frau
-                    <input type="radio" name="geschlecht" value="Herr"/> Herr<br />
+                <form action="javascript:submitForm();" class="form-horizontal">
+                    <input type="radio" name="geschlecht" value="Frau"/>  Frau 
+                    <input type="radio" name="geschlecht" value="Herr"/>  Herr<br />
                     <table>
                       <tr><td>Name:</td>
                         <td><input type="text" name="name" size="50" /></td>
@@ -86,8 +86,9 @@ Released   : 20081210
                     <br />
                     <input type="checkbox" name="team" checked="checked" value="ON" />
                        Ich bin Mitglied des geoweb-Teams <br /><br />
-                    <input type="submit" value="Abschicken">
-                    <input type="reset" value="Zurücksetzen"> <br /><br />
+                    <button type="reset" class="btn btn-default">Zurücksetzen</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <br /><br />
                     Ihr Feedback wird per E-Mail an die Autoren/innen zugestellt<br>
                     und in der Projekt-Datenbank gespeichert.<br /><br />
                     <br />
