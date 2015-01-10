@@ -171,6 +171,7 @@ olMap.on('singleclick', function(evt) {
   
 });
 
+
 // Submit query to Nominatim and zoom map to the result's extent
 var form = document.forms[0];
 form.onsubmit = function(evt) {
