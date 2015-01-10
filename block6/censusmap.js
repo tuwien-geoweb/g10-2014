@@ -20,7 +20,7 @@ maxZoom: 18
 })
 });
 // Load variables into dropdown
-$.get("data/DataDict.txt", function(response) {
+$.get("data/DataDict_US.txt", function(response) {
 // We start at line 3 - line 1 is column names, line 2 is not a variable
 $(response.split('\n').splice(2)).each(function(index, line) {
 $('#topics').append($('<option>')
