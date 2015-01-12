@@ -14,8 +14,8 @@ target: 'map',
 renderer: 'canvas',
 layers: [osmLayer, wmsLayer],
 view: new ol.View({
-center: [10764594.0, 7000000.0],
-zoom: 4,
+center: [-10764594.0, 7000000.0],
+zoom: 3,
 maxZoom: 18
 })
 });
