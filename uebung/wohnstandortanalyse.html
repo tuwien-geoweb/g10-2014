@@ -58,16 +58,21 @@
         </div>
         
         <div class="row">
-          <div class="col-lg-9">
-              <p class="lead"><br>Willkommen bei WEBGIS - Gruppe 10</p>
-            <p>Diese Website wurde im Zuge des Wahlmoduls 10 in der Lehrveranstaltung "Webbasierte Geoinformation im Planungsprozess" (280.290) an der TU Wien im Wintersemester 2014 erstellt.<br>
-            <p class="lead">Über Uns<br> </p>
-            <p>Sascha Moschitz -  0828115<br>
-               Witold Urbanski -  0926232<br>
-               Sebastian Vcelar - 0927706
-            </p>
-            </p>
-          </div> 
+                <div id="map">
+      <!-- GetLegendGraphic, customized with some LEGEND_OPTIONS -->
+            <img class="legend img-rounded" src="http://student.ifip.tuwien.ac.at/geoserver/g10_2014/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=26&HEIGHT=18&STRICT=false&style=g10_stddev&LEGEND_OPTIONS=fontName:sans-serif;fontSize:11;fontAntiAliasing:true;fontStyle:bold;fontColor:0xFFFFFF;bgColor:0x000000">
+          <div id="popup" data-html="true" data-placement="auto" data-title="&times;">
+            <div id="popup-content" style="display:none">
+              <iframe seamless></iframe>
+              <form class="input-group">
+              <input type="text" class="form-control" name="comment">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Comment</button>
+                </span>
+              </form>
+            </div>
+          </div>
+        </div>
         </div>
     </div>
 </div>
