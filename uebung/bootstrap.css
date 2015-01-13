@@ -3925,6 +3925,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .banner-fixed-g10 {
   position: fixed;
+  z-index: 1030;
 }
 @media (min-width: 768px) {
   .navbar-fixed-top,
