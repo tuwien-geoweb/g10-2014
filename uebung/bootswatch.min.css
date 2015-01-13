@@ -181,6 +181,10 @@ footer p {
     margin-bottom: 2em
 }
 
+.glyphicon-search:before {
+    content:"\e003"
+}
+
 @media (max-width:767px) {
     .section-preview .image img {
         width: 100%
