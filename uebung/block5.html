@@ -12,6 +12,12 @@
 <link href="bootstrap.css" rel="stylesheet"/>
 <link href="bootswatch.min.css" rel="stylesheet" type="text/css" media="screen" />
  <link rel="stylesheet" href="http://openlayers.org/en/v3.0.0/css/ol.css" type="text/css">
+ <style>
+     .location-query{
+         float:left;
+     }
+     
+ </style>
 </head>
 
 <body>
@@ -65,7 +71,7 @@
             <div id="map"></div>
           </div>
           <div class="col-md-4">
-            <form id="search">
+            <form class="location-query" id="search">
                 <input name="query" type="text" size="20" placeholder="Search Location">
                 <a href="block5.html" class="btn btn-default">Reset View</a>
             </form>
