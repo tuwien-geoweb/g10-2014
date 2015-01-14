@@ -75,6 +75,7 @@
           <div class="col-md-4">
             <form class="location-query" id="search">
                 <input name="query" type="text" size="20" placeholder="Search Location">
+                <button class=btn btn-default">FIND</button>
                 <a href="block5.html" class="btn btn-default">Reset View</a>
             </form>
           </div>  
@@ -130,23 +131,29 @@
      
      zuruck();
         
-     form.onsubmit = function search(evt) {
-      evt.preventDefault();
-      var url = 'http://nominatim.openstreetmap.org/search?&format=json&q=' + form.query.value;  
-      var xhr = new XMLHttpRequest();
-      
-         
-      xhr.open("GET", url, true);
-      xhr.onload = function() {
-        var result = JSON.parse(xhr.responseText);
-        var bbox = result[0].boundingbox;
-        var extent = [parseFloat(bbox[2]), parseFloat(bbox[0]), parseFloat(bbox[3]), parseFloat(bbox[1])];
-        map.getView().fitExtent(ol.proj.transformExtent(extent, 'EPSG:4326', 'EPSG:3857'), map.getSize());
-        marker.setGeometry(new ol.geom.Point(map.getView().getCenter()));  
-          
-      };
-      xhr.send();
-      }
+     var form = document.forms[0];
+form.onsubmit = function(evt) {
+var url = 'http://nominatim.openstreetmap.org/search?format=json&q=';
+url += form.query.value;
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url, true);
+xhr.onload = function() {
+var result = JSON.parse(xhr.responseText);
+if (result.length > 0) {
+var bbox = result[0].boundingbox;
+olMap.getView().fitExtent(ol.proj.transform([parseFloat(bbox[2]),
+parseFloat(bbox[0]), parseFloat(bbox[3]), parseFloat(bbox[1])],
+'EPSG:4326', 'EPSG:3857'), olMap.getSize());
+}
+};
+xhr.send();
+evt.preventDefault();
+};
+view: new ol.View({
+center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
+zoom: 11,
+maxZoom: 18
+})
     </script>
 </body>
 </html>
