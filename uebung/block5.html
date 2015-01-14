@@ -16,10 +16,6 @@
      .location-query{
          float:right;
      }
-     .Banner{
-         position:fixed;
-         top:40px;
-     }
      
  </style>
 </head>
@@ -62,13 +58,14 @@
         </div>  
   </div>    
 </div>
-<div class="container" id="Banner">
+<div class="container" id="Hauptbereich">
+    <div class="page-header" id="banner">
         <div class="row">
-          <div class="col-lg-12 Banner">
+          <div class="col-lg-12">
               <img src="images/Wien_Hist_Karte_Cut_H_Mooss.jpg">
           </div>  
-        </div></div>
-        <div class="container" id="Hauptbereich"
+        </div>
+        <br>
         <div class="row">
           <div class="col-md-8">
             <div id="map"></div>
@@ -80,7 +77,8 @@
             </form>
           </div>  
         </div>
-
+    </div>
+</div>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="bootstrap.js"></script>
     <script src="http://openlayers.org/en/v3.0.0/build/ol.js"></script>
