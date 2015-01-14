@@ -1,18 +1,6 @@
 // TUTORIAL #1
 // Base map
-var marker = new ol.layer.Vector({
-            source: new ol.source.Vector ({
-              features: [marker]
-            }),
-            style: new ol.style.Style({
-            image: new ol.style.Icon(({
-              anchor: [0.5, 46],
-              anchorXUnits: 'fraction',
-              anchorYUnits: 'pixels',
-              opacity: 0.75,
-              src: 'http://student.ifip.tuwien.ac.at/geoweb/2014/g10/website_g10/red.png'
-              }))
-            })
+
 var osmLayer = new ol.layer.Tile({source: new ol.source.OSM()});
 
 // Census map layer
@@ -200,7 +188,6 @@ form.onsubmit = function(evt) {
       olMap.getView().fitExtent(ol.proj.transform([parseFloat(bbox[2]),
           parseFloat(bbox[0]), parseFloat(bbox[3]), parseFloat(bbox[1])],
           'EPSG:4326', 'EPSG:3857'), olMap.getSize());
-          marker.setGeometry(new ol.geom.Point(map.getView().getCenter())); 
     }
      
   };
