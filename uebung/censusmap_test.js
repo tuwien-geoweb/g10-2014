@@ -175,25 +175,49 @@ olMap.on('singleclick', function(evt) {
 
 
 // Submit query to Nominatim and zoom map to the result's extent
-var form = document.forms[0];
-form.onsubmit = function(evt) {
-  var url = 'http://nominatim.openstreetmap.org/search?format=json&q=';
-  url += form.query.value;
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", url, true);
-  xhr.onload = function() {
-    var result = JSON.parse(xhr.responseText);
-    if (result.length > 0) {
-      var bbox = result[0].boundingbox;
-      olMap.getView().fitExtent(ol.proj.transform([parseFloat(bbox[2]),
-          parseFloat(bbox[0]), parseFloat(bbox[3]), parseFloat(bbox[1])],
-          'EPSG:4326', 'EPSG:3857'), olMap.getSize());
-    }
-     
-  };
-  xhr.send();
-  evt.preventDefault();
+var marker = new ol.Feature({
+  geometry: new ol.geom.Point([0, 0]),
+  name: 'Null Island',
+  population: 4000,
+  rainfall: 500
+});
+
+var iconStyle = new ol.style.Style({
+  image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+    anchor: [0.5, 46],
+    anchorXUnits: 'fraction',
+    anchorYUnits: 'pixels',
+    opacity: 0.75,
+    src: 'data/icon.png'
+  }))
+});
+
+marker.setStyle(iconStyle);
+
+var vectorSource = new ol.source.Vector({
+  features: [marker]
+});
+
+var vectorLayer = new ol.layer.Vector({
+  source: vectorSource
+});
+
+
+form.onsubmit = function search(evt) {
+evt.preventDefault();
+var url = 'http://nominatim.openstreetmap.org/search?&format=json&q=' + form.query.value;
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url, true);
+xhr.onload = function() {
+var result = JSON.parse(xhr.responseText);
+var bbox = result[0].boundingbox;
+var extent = [parseFloat(bbox[2]), parseFloat(bbox[0]), parseFloat(bbox[3]), parseFloat(bbox[1])];
+map.getView().fitExtent(ol.proj.transformExtent(extent, 'EPSG:4326', 'EPSG:3857'), map.getSize());
+marker.setGeometry(new ol.geom.Point(map.getView().getCenter()));
 };
+xhr.send();
+}
+
 view: new ol.View({
   center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
   zoom: 11,
