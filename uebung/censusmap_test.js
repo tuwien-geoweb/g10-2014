@@ -101,7 +101,7 @@ source: new ol.source.GeoJSON({
 
 // Map object
 
-olMap = new ol.Map({
+var olMap = new ol.Map({
   target: 'map',
   renderer: 'canvas',
   layers: [osmLayer, wmsLayer],
@@ -109,7 +109,7 @@ olMap = new ol.Map({
   center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
   zoom: 11,
   maxZoom: 18
-})
+  })
 });
 // !TUTORIAL #1
 
