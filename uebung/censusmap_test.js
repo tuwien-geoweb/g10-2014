@@ -212,8 +212,8 @@ xhr.onload = function() {
 var result = JSON.parse(xhr.responseText);
 var bbox = result[0].boundingbox;
 var extent = [parseFloat(bbox[2]), parseFloat(bbox[0]), parseFloat(bbox[3]), parseFloat(bbox[1])];
-map.getView().fitExtent(ol.proj.transformExtent(extent, 'EPSG:4326', 'EPSG:3857'), map.getSize());
-marker.setGeometry(new ol.geom.Point(map.getView().getCenter()));
+olMap.getView().fitExtent(ol.proj.transformExtent(extent, 'EPSG:4326', 'EPSG:3857'), olMap.getSize());
+marker.setGeometry(new ol.geom.Point(olMap.getView().getCenter()));
 };
 xhr.send();
 }
