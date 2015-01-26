@@ -20,7 +20,7 @@ var markerLayer = new ol.layer.Vector({
 })
 var commentLayer = new ol.layer.Vector({
   source: new ol.source.GeoJSON({
-    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:comments&maxFeatures=50&outputFormat=json',
+    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:feedback&maxFeatures=50&outputFormat=json',
     projection: 'EPSG:3857'
   }),
     style: new ol.style.Style({
