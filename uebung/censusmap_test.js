@@ -4,7 +4,7 @@ var osmLayer = new ol.layer.Tile({source: new ol.source.OSM()});
 var wmsLayer = new ol.layer.Image({
   source: new ol.source.ImageWMS({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/wms',
-    params: {'LAYERS': 'g10_2014:normalized_data_vie,g10_2014:comments'}
+    params: {'LAYERS': 'g10_2014:normalized_data_vie'}
   }),
   opacity: 0.6
 });
@@ -127,21 +127,6 @@ source: new ol.source.GeoJSON({
         })
     })
 });
-
-
-// Map object
-
-
-
-
-
-
-
-
-
-
-// !TUTORIAL #1
-
 // TUTORIAL #2
 // Load variables into dropdown
 $.get("data/DataDict.txt", function(response) {
@@ -152,20 +137,17 @@ $.get("data/DataDict.txt", function(response) {
       .html(line.substr(10, 50).trim()));
   });
 });
-
 // Add behaviour to dropdown
 $('#topics').change(function() {
   wmsLayer.getSource().updateParams({
     'viewparams': 'column:' + $('#topics>option:selected').val()
   });
 });
-
 // Create an ol.Overlay with a popup anchored to the map
 var popup = new ol.Overlay({
   element: $('#popup')
 });
 olMap.addOverlay(popup);
-
 // Handle map clicks to send a GetFeatureInfo request and open the popup
 olMap.on('singleclick', function(evt) {
   var view = olMap.getView();
@@ -180,8 +162,7 @@ olMap.on('singleclick', function(evt) {
   $('.popover-title').click(function() {
     $('#popup').popover('hide');
   });
-  
-  $('.popover form')[0].onsubmit = function(e) {
+$('.popover form')[0].onsubmit = function(e) {
   var feature = new ol.Feature();
   feature.setGeometryName('geom');
   feature.setGeometry(new ol.geom.Point(evt.coordinate));
@@ -199,10 +180,7 @@ olMap.on('singleclick', function(evt) {
   xhr.send(new XMLSerializer().serializeToString(xml));
   e.preventDefault();
 };
-  
 });
-
-
 // Submit query to Nominatim and zoom map to the result's extent
 var form = document.forms[0];
 form.onsubmit = function(searching) {
