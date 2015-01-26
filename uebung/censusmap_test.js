@@ -31,7 +31,6 @@ var markerLayer = new ol.layer.Vector({
 })
 var olMap = new ol.Map({
   target: 'map',
-  renderer: 'canvas',
   layers: [osmLayer, wmsLayer, markerLayer],
   view: new ol.View({
   center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
