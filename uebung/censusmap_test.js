@@ -216,7 +216,6 @@ form.onsubmit = function(searching) {
           'EPSG:4326', 'EPSG:3857'), olMap.getSize());
           marker.setGeometry(new ol.geom.Point(olMap.getView().getCenter()));
     }
-     
   };
   yhr.send();
   searching.preventDefault();
