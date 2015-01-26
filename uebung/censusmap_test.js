@@ -25,11 +25,7 @@ var markerLayer = new ol.layer.Vector({
       }),
       style: new ol.style.Style({
             image: new ol.style.Icon(({
-                  anchor: [0.5, 46],
-                  anchorXUnits: 'fraction',
-                  anchorYUnits: 'pixels',
-                  opacity: 0.75,
-                  src: 'http://student.ifip.tuwien.ac.at/geoweb/2014/g10/website_g10/red.png'
+              src: 'http://student.ifip.tuwien.ac.at/geoweb/2014/g10/website_g10/red.png'
             }))
       })
 })
