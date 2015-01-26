@@ -1,12 +1,3 @@
-$("zuruck").function() {       
-  var position = new ol.Geolocation({
-    projection: 'EPSG:3857'
-  });
-  position.setTracking(true);
-  position.on('change:position', function() {
-  position.setTracking(false);
-  });
-}  
 var marker = new ol.Feature();        
 // Karte
 var osmLayer = new ol.layer.Tile({source: new ol.source.OSM()});
