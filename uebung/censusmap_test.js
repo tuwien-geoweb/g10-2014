@@ -1,60 +1,6 @@
 // TUTORIAL #1
 // Base map
 
-// Marker Reset Funktionen
-var suchfeld = document.getElementById('search');  
-suchfeld.onsubmit = function search(evt) {
-  evt.preventDefault();
-var iadrr = 'http://nominatim.openstreetmap.org/search?&format=json&q=' + suchfeld.query.value;  
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.open("GET", iadrr, true);
-xmlhttp.onload = function() {
-var result = JSON.parse(xmlhttp.responseText);
-var bbox = result[0].boundingbox;
-var extent = [parseFloat(bbox[2]), parseFloat(bbox[0]), parseFloat(bbox[3]), parseFloat(bbox[1])];
-  map.getView().fitExtent(ol.proj.transformExtent(extent, 'EPSG:4326', 'EPSG:3857'), map.getSize());
-  marker.setGeometry(new ol.geom.Point(map.getView().getCenter()));  
-  };
-xmlhttp.send();
-}
-
-var marker = new ol.Feature();
-var marker-layer = new ol.layer.Vector({
-            source: new ol.source.Vector ({
-              features: [marker]
-            }),
-            style: new ol.style.Style({
-            image: new ol.style.Icon(({
-              anchor: [0.5, 46],
-              anchorXUnits: 'fraction',
-              anchorYUnits: 'pixels',
-              opacity: 0.75,
-              src: 'http://student.ifip.tuwien.ac.at/geoweb/2014/g10/website_g10/red.png'
-              }))
-            })
-          })
-          
-          
-          
-          
-          
-// Reset View          
-function zuruck() {       
-          var geolocation = new ol.Geolocation({
-            projection: 'EPSG:3857'
-          });
-          geolocation.setTracking(true);
-          geolocation.on('change:position', function() {
-          geolocation.setTracking(false);
-          map.getView().setCenter(geolocation.getPosition());
-          marker.setGeometry(new ol.geom.Point(map.getView().getCenter()));
-          });
-      }     
- 
-//
-
-//old
-
 var osmLayer = new ol.layer.Tile({source: new ol.source.OSM()});
 
 // Census map layer
