@@ -1,14 +1,4 @@
-$("zuruck").function() {       
-  var geolocation = new ol.Geolocation({
-    projection: 'EPSG:3857'
-  });
-  geolocation.setTracking(true);
-  geolocation.on('change:position', function() {
-  geolocation.setTracking(false);
-  map.getView().setCenter(geolocation.getPosition());
-  marker.setGeometry(new ol.geom.Point(map.getView().getCenter()));
-  });
-}     
+     
 var marker = new ol.Feature();        
 // Karte
 var osmLayer = new ol.layer.Tile({source: new ol.source.OSM()});
