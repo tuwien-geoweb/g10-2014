@@ -2,10 +2,10 @@
 // Base map
 
 // Marker Reset Funktionen
-var form = document.getElementById('search');  
-form.onsubmit = function search(evt) {
+var suchfeld = document.getElementById('search');  
+suchfeld.onsubmit = function search(evt) {
   evt.preventDefault();
-var iadrr = 'http://nominatim.openstreetmap.org/search?&format=json&q=' + form.query.value;  
+var iadrr = 'http://nominatim.openstreetmap.org/search?&format=json&q=' + suchfeld.query.value;  
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET", iadrr, true);
 xmlhttp.onload = function() {
