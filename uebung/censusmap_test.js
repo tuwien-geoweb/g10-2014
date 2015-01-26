@@ -1,4 +1,4 @@
-function zuruck() {       
+zuruck.function() {       
   var geolocation = new ol.Geolocation({
     projection: 'EPSG:3857'
   });
