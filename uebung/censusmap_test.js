@@ -1,9 +1,3 @@
-
-      
-      
-
-
-
 function zuruck() {       
   var geolocation = new ol.Geolocation({
     projection: 'EPSG:3857'
@@ -15,43 +9,9 @@ function zuruck() {
   marker.setGeometry(new ol.geom.Point(map.getView().getCenter()));
   });
 }     
-
 var marker = new ol.Feature();        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// TUTORIAL #1
-// Base map
-
+// Karte
 var osmLayer = new ol.layer.Tile({source: new ol.source.OSM()});
-
-// Census map layer
 var wmsLayer = new ol.layer.Image({
   source: new ol.source.ImageWMS({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/wms',
@@ -59,21 +19,30 @@ var wmsLayer = new ol.layer.Image({
   }),
   opacity: 0.6
 });
-
-new ol.layer.Vector({
-            source: new ol.source.Vector ({
-              features: [marker]
-            }),
-            style: new ol.style.Style({
+var markerLayer = new ol.layer.Vector({
+      source: new ol.source.Vector ({
+            features: [marker]
+      }),
+      style: new ol.style.Style({
             image: new ol.style.Icon(({
-              anchor: [0.5, 46],
-              anchorXUnits: 'fraction',
-              anchorYUnits: 'pixels',
-              opacity: 0.75,
-              src: 'http://student.ifip.tuwien.ac.at/geoweb/2014/g10/website_g10/red.png'
-              }))
-            })
-          })
+                  anchor: [0.5, 46],
+                  anchorXUnits: 'fraction',
+                  anchorYUnits: 'pixels',
+                  opacity: 0.75,
+                  src: 'http://student.ifip.tuwien.ac.at/geoweb/2014/g10/website_g10/red.png'
+            }))
+      })
+})
+var olMap = new ol.Map({
+  target: 'map',
+  renderer: 'canvas',
+  layers: [osmLayer, wmsLayer, markerLayer],
+  view: new ol.View({
+  center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
+  zoom: 11,
+  maxZoom: 18
+})
+});
 
 
 //Checkboxen
@@ -164,16 +133,7 @@ source: new ol.source.GeoJSON({
 
 // Map object
 
-olMap = new ol.Map({
-  target: 'map',
-  renderer: 'canvas',
-  layers: [osmLayer, wmsLayer, markerLayer],
-  view: new ol.View({
-  center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
-  zoom: 11,
-  maxZoom: 18
-})
-});
+
 
 
 
@@ -266,11 +226,7 @@ form.onsubmit = function(evt) {
   xhr.send();
   evt.preventDefault();
 };
-view: new ol.View({
-  center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
-  zoom: 11,
-  maxZoom: 18
-})
+
 
 document.getElementById('haltestellen').onclick = function(e){
   if(this.checked==1){
