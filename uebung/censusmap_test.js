@@ -1,44 +1,6 @@
 // TUTORIAL #1
 // Base map
 
-function zuruck() {       
-          var geolocation = new ol.Geolocation({
-            projection: 'EPSG:3857'
-          });
-          geolocation.setTracking(true);
-          geolocation.on('change:position', function() {
-          geolocation.setTracking(false);
-          map.getView().setCenter(geolocation.getPosition());
-          marker.setGeometry(new ol.geom.Point(map.getView().getCenter()));
-          });
-      };     
-
-var form = document.getElementById('search'); 
-
-form.onsubmit = function search(evt) {
-  evt.preventDefault();
-  var url = 'http://nominatim.openstreetmap.org/search?&format=json&q=' + form.query.value;  
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", url, true);
-  xhr.onload = function() {
-        var result = JSON.parse(xhr.responseText);
-        var bbox = result[0].boundingbox;
-        var extent = [parseFloat(bbox[2]), parseFloat(bbox[0]), parseFloat(bbox[3]), parseFloat(bbox[1])];
-        map.getView().fitExtent(ol.proj.transformExtent(extent, 'EPSG:4326', 'EPSG:3857'), map.getSize());
-        marker.setGeometry(new ol.geom.Point(map.getView().getCenter()));  
-          
-      };
-  xhr.send();
-}
-
-
-
-
-
-
-
-
-
 var osmLayer = new ol.layer.Tile({source: new ol.source.OSM()});
 
 // Census map layer
@@ -49,22 +11,7 @@ var wmsLayer = new ol.layer.Image({
   }),
   opacity: 0.6
 });
-var markerLayer = new ol.layer.Vector({
-            source: new ol.source.Vector ({
-              features: [marker]
-            }),
-            style: new ol.style.Style({
-            image: new ol.style.Icon(({
-              anchor: [0.5, 46],
-              anchorXUnits: 'fraction',
-              anchorYUnits: 'pixels',
-              opacity: 0.75,
-              src: 'http://student.ifip.tuwien.ac.at/geoweb/2014/g10/website_g10/red.png'
-              }))
-            })
-          })
-          
-var marker = new ol.Feature();
+
 
 //Checkboxen
 var haltestellen = new ol.layer.Vector({
@@ -154,15 +101,15 @@ source: new ol.source.GeoJSON({
 
 // Map object
 
-var olMap = new ol.Map({
+olMap = new ol.Map({
   target: 'map',
   renderer: 'canvas',
-  layers: [osmLayer, wmsLayer, markerLayer],
+  layers: [osmLayer, wmsLayer],
   view: new ol.View({
-          center: ol.proj.transform([16.3, 48.2], 'EPSG:4326', 'EPSG:3857'),
-          zoom: 11,
-          maxZoom: 19,
-        })
+  center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
+  zoom: 11,
+  maxZoom: 18
+})
 });
 // !TUTORIAL #1
 
@@ -226,6 +173,32 @@ olMap.on('singleclick', function(evt) {
   
 });
 
+
+// Submit query to Nominatim and zoom map to the result's extent
+var form = document.forms[0];
+form.onsubmit = function(evt) {
+  var url = 'http://nominatim.openstreetmap.org/search?format=json&q=';
+  url += form.query.value;
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url, true);
+  xhr.onload = function() {
+    var result = JSON.parse(xhr.responseText);
+    if (result.length > 0) {
+      var bbox = result[0].boundingbox;
+      olMap.getView().fitExtent(ol.proj.transform([parseFloat(bbox[2]),
+          parseFloat(bbox[0]), parseFloat(bbox[3]), parseFloat(bbox[1])],
+          'EPSG:4326', 'EPSG:3857'), olMap.getSize());
+    }
+     
+  };
+  xhr.send();
+  evt.preventDefault();
+};
+view: new ol.View({
+  center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
+  zoom: 11,
+  maxZoom: 18
+})
 
 document.getElementById('haltestellen').onclick = function(e){
   if(this.checked==1){
