@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta name="keywords" content="">
@@ -48,10 +49,10 @@ width: 380px;
 padding-right: 20px;
 }
 .reset{
-margin-right: 20px;
+  margin-right: 20px;
 }
 .checkboxen{
-float:right;
+  float:right;
 }
 </style>
 </head>
@@ -98,23 +99,23 @@ float:right;
 </div>
 <br>
 <div class="navbar navbar">
-<div class="navbar-header">
-<a class="navbar-brand">Wohnstandortanalyse</a>
-</div>
-<form class="navbar-form navbar-right">
-<div class="form-group">
-<select id="topics" class="form-control select"></select>
-</div>
-<div class="input-group">
-<input type="text" class="form-control" name="search" placeholder="Suche...">
-<span class="input-group-btn">
-<button class="btn btn-default" type="submit">
-<span>Finden</span>
-</button>
-</span>
-</div>
-<a href="wohnstandortanalyse.html" class="btn btn-default reset">Reset View</a>
-</form>
+  <div class="navbar-header">
+  <a class="navbar-brand">Wohnstandortanalyse</a>
+  </div>
+  <form class="navbar-form navbar-right">
+    <div class="form-group">
+      <select id="topics" class="form-control select"></select>
+    </div>
+    <div class="input-group">
+      <input type="text" class="form-control" name="query" placeholder="Suche...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">
+          <span>Finden</span>
+        </button>
+      </span>
+    </div>
+    <a href="wohnstandortanalyse.html" class="btn btn-default reset">Reset View</a>
+  </form>
 </div>
 <div id="map">
 <!-- GetLegendGraphic, customized with some LEGEND_OPTIONS -->
@@ -132,18 +133,18 @@ float:right;
 </div>
 </div>
 <div class="checkboxen">
-<label class="checkbox-inline"><input type="checkbox" id="haltestellen"><img src="images/haltestelle.png" hight="15" width="15"> Haltestellen Wiener Linien</label>
-<label class="checkbox-inline"><input type="checkbox" id="citybike"> <img src="images/citybike.png" hight="15" width="15"> CityBike</label>
-<label class="checkbox-inline"><input type="checkbox" id="markt"> <img src="images/markt.png" hight="15" width="15"> Märkte</label>
-<label class="checkbox-inline"><input type="checkbox" id="wlan"> <img src="images/wlan.png" hight="15" width="15"> W-LAN</label>
-<label class="checkbox-inline"><input type="checkbox" id="spielplatz"> <img src="images/spielplatz.png" hight="15" width="15"> Spielplätze</label>
-<label class="checkbox-inline"><input type="checkbox" id="sportplatz"> <img src="images/sportplatz.png" hight="15" width="15"> Sportplätze</label>
-<label class="checkbox-inline"><input type="checkbox" id="bildung"> <img src="images/schule.png" hight="15" width="15"> Bildung</label><br>
+<label class="checkbox-inline"><input type="checkbox" id="haltestellen"><img src="images/haltestelle.png" hight="15" width="15"> Haltestellen Wiener Linien</label> 
+            <label class="checkbox-inline"><input type="checkbox" id="citybike"> <img src="images/citybike.png" hight="15" width="15"> CityBike</label>     
+            <label class="checkbox-inline"><input type="checkbox" id="markt"> <img src="images/markt.png" hight="15" width="15"> Märkte</label>     
+            <label class="checkbox-inline"><input type="checkbox" id="wlan"> <img src="images/wlan.png" hight="15" width="15"> W-LAN</label>     
+            <label class="checkbox-inline"><input type="checkbox" id="spielplatz"> <img src="images/spielplatz.png" hight="15" width="15"> Spielplätze</label>     
+            <label class="checkbox-inline"><input type="checkbox" id="sportplatz"> <img src="images/sportplatz.png" hight="15" width="15"> Sportplätze</label>     
+            <label class="checkbox-inline"><input type="checkbox" id="bildung"> <img src="images/schule.png" hight="15" width="15"> Bildung</label><br>
 </div>
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="bootstrap.js"></script>
-<script type="text/javascript" src="censusmap_test.js"></script>
+<script type="text/javascript" src="census_map.js"></script>
 </body>
 </html>
