@@ -17,7 +17,7 @@ var markerLayer = new ol.layer.Vector({
               src: 'http://student.ifip.tuwien.ac.at/geoweb/2014/g10/website_g10/red.png'
             }))
       })
-})
+});
 var commentLayer = new ol.layer.Vector({
   source: new ol.source.GeoJSON({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:feedback&maxFeatures=50&outputFormat=json',
