@@ -229,7 +229,7 @@ document.getElementById('citybike').onclick = function(e){
     olMap.removeLayer(citybike);
   }
 };
-function zuruck() {
+document.getElementById('zuruck').onclick = function() {
       var geolocation = new ol.Geolocation({
             projection: 'EPSG:3857'
       });
