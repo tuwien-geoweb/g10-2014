@@ -21,7 +21,7 @@ var wmsLayer = new ol.layer.Image({
 });
 var olMap = new ol.Map({
   target: 'map',
-  layers: [osmLayer, wmsLayer, markerLayer, commentLayer],
+  layers: [osmLayer, wmsLayer, markerLayer],
   view: new ol.View({
   center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
   zoom: 11,
