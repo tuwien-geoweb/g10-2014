@@ -229,3 +229,13 @@ document.getElementById('citybike').onclick = function(e){
     olMap.removeLayer(citybike);
   }
 };
+function zuruck() {
+      var geolocation = new ol.Geolocation({
+            projection: 'EPSG:3857'
+      });
+      geolocation.setTracking(true);
+      geolocation.on('change:position', function() {
+            geolocation.setTracking(false);
+            olMap.getView().setCenter(geolocation.getPosition());
+      });
+}
