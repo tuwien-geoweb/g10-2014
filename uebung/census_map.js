@@ -258,3 +258,6 @@ document.getElementById('citybike').onclick = function(e){
     olMap.removeLayer(citybike);
   }
 };
+document.getElementById('zuruck').onclick = function() {
+olMap.getView().setCenter(ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'))
+};
