@@ -230,12 +230,6 @@ document.getElementById('citybike').onclick = function(e){
   }
 };
 document.getElementById('zuruck').onclick = function() {
-      var geolocation = new ol.Geolocation({
-            projection: 'EPSG:3857'
-      });
-      geolocation.setTracking(true);
-      geolocation.on('change:position', function() {
-            geolocation.setTracking(false);
-            olMap.getView().setCenter(geolocation.getPosition());
-      });
-}
+      olMap.getView().setCenter(ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'))
+};
+      
