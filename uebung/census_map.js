@@ -1,17 +1,13 @@
-// TUTORIAL #1
-// Base map
-
+var marker = new ol.Feature();        
+// Karte
 var osmLayer = new ol.layer.Tile({source: new ol.source.OSM()});
-
-// Census map layer
 var wmsLayer = new ol.layer.Image({
   source: new ol.source.ImageWMS({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/wms',
-    params: {'LAYERS': 'g10_2014:normalized_data_vie,g10_2014:comments'}
+    params: {'LAYERS': 'g10_2014:normalized_data_vie'}
   }),
   opacity: 0.6
 });
-
 var markerLayer = new ol.layer.Vector({
       source: new ol.source.Vector ({
             features: [marker]
@@ -22,6 +18,31 @@ var markerLayer = new ol.layer.Vector({
             }))
       })
 });
+var commentLayer = new ol.layer.Vector({
+  source: new ol.source.GeoJSON({
+    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:feedback&maxFeatures=50&outputFormat=json',
+    projection: 'EPSG:3857'
+  }),
+    style: new ol.style.Style({
+       image: new ol.style.Icon({
+          src: 'http://student.ifip.tuwien.ac.at/geoweb/2014/g10/website_g10/red.png',
+        })
+    })
+});
+
+
+
+var olMap = new ol.Map({
+  target: 'map',
+  layers: [osmLayer, wmsLayer, markerLayer, commentLayer],
+  view: new ol.View({
+  center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
+  zoom: 11,
+  maxZoom: 18
+})
+});
+
+
 //Checkboxen
 var haltestellen = new ol.layer.Vector({
   source: new ol.source.GeoJSON({
@@ -106,22 +127,6 @@ source: new ol.source.GeoJSON({
         })
     })
 });
-
-
-// Map object
-
-olMap = new ol.Map({
-  target: 'map',
-  renderer: 'canvas',
-  layers: [osmLayer, wmsLayer, markerLayer],
-  view: new ol.View({
-  center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
-  zoom: 11,
-  maxZoom: 18
-})
-});
-// !TUTORIAL #1
-
 // TUTORIAL #2
 // Load variables into dropdown
 $.get("data/DataDict.txt", function(response) {
@@ -132,20 +137,17 @@ $.get("data/DataDict.txt", function(response) {
       .html(line.substr(10, 50).trim()));
   });
 });
-
 // Add behaviour to dropdown
 $('#topics').change(function() {
   wmsLayer.getSource().updateParams({
     'viewparams': 'column:' + $('#topics>option:selected').val()
   });
 });
-
 // Create an ol.Overlay with a popup anchored to the map
 var popup = new ol.Overlay({
   element: $('#popup')
 });
 olMap.addOverlay(popup);
-
 // Handle map clicks to send a GetFeatureInfo request and open the popup
 olMap.on('singleclick', function(evt) {
   var view = olMap.getView();
@@ -160,8 +162,7 @@ olMap.on('singleclick', function(evt) {
   $('.popover-title').click(function() {
     $('#popup').popover('hide');
   });
-  
-  $('.popover form')[0].onsubmit = function(e) {
+$('.popover form')[0].onsubmit = function(e) {
   var feature = new ol.Feature();
   feature.setGeometryName('geom');
   feature.setGeometry(new ol.geom.Point(evt.coordinate));
@@ -179,10 +180,7 @@ olMap.on('singleclick', function(evt) {
   xhr.send(new XMLSerializer().serializeToString(xml));
   e.preventDefault();
 };
-  
 });
-
-
 // Submit query to Nominatim and zoom map to the result's extent
 var form = document.forms[0];
 form.onsubmit = function(searching) {
@@ -203,11 +201,7 @@ form.onsubmit = function(searching) {
   yhr.send();
   searching.preventDefault();
 };
-view: new ol.View({
-  center: ol.proj.transform([16.4, 48.2], 'EPSG:4326', 'EPSG:3857'),
-  zoom: 11,
-  maxZoom: 18
-})
+
 
 document.getElementById('haltestellen').onclick = function(e){
   if(this.checked==1){
