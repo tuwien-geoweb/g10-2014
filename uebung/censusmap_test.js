@@ -1,13 +1,5 @@
-var marker = new ol.Feature();        
-// Karte
-var osmLayer = new ol.layer.Tile({source: new ol.source.OSM()});
-var wmsLayer = new ol.layer.Image({
-  source: new ol.source.ImageWMS({
-    url: 'http://student.ifip.tuwien.ac.at/geoserver/wms',
-    params: {'LAYERS': 'g10_2014:normalized_data_vie'}
-  }),
-  opacity: 0.6
-});
+// marker
+var marker = new ol.Feature();
 var markerLayer = new ol.layer.Vector({
       source: new ol.source.Vector ({
             features: [marker]
@@ -18,20 +10,15 @@ var markerLayer = new ol.layer.Vector({
             }))
       })
 });
-var commentLayer = new ol.layer.Vector({
-  source: new ol.source.GeoJSON({
-    url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:feedback&maxFeatures=50&outputFormat=json',
-    projection: 'EPSG:3857'
+// Karte
+var osmLayer = new ol.layer.Tile({source: new ol.source.OSM()});
+var wmsLayer = new ol.layer.Image({
+  source: new ol.source.ImageWMS({
+    url: 'http://student.ifip.tuwien.ac.at/geoserver/wms',
+    params: {'LAYERS': 'g10_2014:normalized_data_vie,g10_2014:comments'}
   }),
-    style: new ol.style.Style({
-       image: new ol.style.Icon({
-          src: 'http://student.ifip.tuwien.ac.at/geoweb/2014/g10/website_g10/red.png',
-        })
-    })
+  opacity: 0.6
 });
-
-
-
 var olMap = new ol.Map({
   target: 'map',
   layers: [osmLayer, wmsLayer, markerLayer, commentLayer],
@@ -41,8 +28,6 @@ var olMap = new ol.Map({
   maxZoom: 18
 })
 });
-
-
 //Checkboxen
 var haltestellen = new ol.layer.Vector({
   source: new ol.source.GeoJSON({
@@ -55,7 +40,6 @@ var haltestellen = new ol.layer.Vector({
         })
     })
 });
-
 var bildung = new ol.layer.Vector({
 source: new ol.source.GeoJSON({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:SCHULEOGDPoint&outputFormat=json',
@@ -67,7 +51,6 @@ source: new ol.source.GeoJSON({
         })
     })
 });
-
 var wlan = new ol.layer.Vector({
 source: new ol.source.GeoJSON({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:WLANWIENATOGDPoint&outputFormat=json',
@@ -79,7 +62,6 @@ source: new ol.source.GeoJSON({
         })
     })
 });
-
 var markt = new ol.layer.Vector({
 source: new ol.source.GeoJSON({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:MAERKTEOGDPoint&outputFormat=json',
@@ -91,7 +73,6 @@ source: new ol.source.GeoJSON({
         })
     })
 });
-
 var citybike = new ol.layer.Vector({
 source: new ol.source.GeoJSON({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:CITYBIKEOGDPoint&outputFormat=json',
@@ -103,7 +84,6 @@ source: new ol.source.GeoJSON({
         })
     })
 });
-
 var spielplatz = new ol.layer.Vector({
 source: new ol.source.GeoJSON({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:SPIELPLATZOGDPoint&outputFormat=json',
@@ -115,7 +95,6 @@ source: new ol.source.GeoJSON({
         })
     })
 });
-
 var sportplatz = new ol.layer.Vector({
 source: new ol.source.GeoJSON({
     url: 'http://student.ifip.tuwien.ac.at/geoserver/g10_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=g10_2014:SPORTSTAETTENOGDPoint&outputFormat=json',
@@ -127,8 +106,7 @@ source: new ol.source.GeoJSON({
         })
     })
 });
-// TUTORIAL #2
-// Load variables into dropdown
+// Dropdown
 $.get("data/DataDict.txt", function(response) {
   // We start at line 3 - line 1 is column names, line 2 is not a variable
   $(response.split('\n').splice(2)).each(function(index, line) {
@@ -201,8 +179,7 @@ form.onsubmit = function(searching) {
   yhr.send();
   searching.preventDefault();
 };
-
-
+//Checkboxen Funktion
 document.getElementById('haltestellen').onclick = function(e){
   if(this.checked==1){
     olMap.addLayer(haltestellen);
@@ -210,7 +187,6 @@ document.getElementById('haltestellen').onclick = function(e){
     olMap.removeLayer(haltestellen);
   }
 };
-
 document.getElementById('bildung').onclick = function(e){
   if(this.checked==1){
     olMap.addLayer(bildung);
@@ -218,7 +194,6 @@ document.getElementById('bildung').onclick = function(e){
     olMap.removeLayer(bildung);
   }
 };
-
 document.getElementById('markt').onclick = function(e){
   if(this.checked==1){
     olMap.addLayer(markt);
@@ -226,7 +201,6 @@ document.getElementById('markt').onclick = function(e){
     olMap.removeLayer(markt);
   }
 };
-
 document.getElementById('spielplatz').onclick = function(e){
   if(this.checked==1){
     olMap.addLayer(spielplatz);
@@ -234,7 +208,6 @@ document.getElementById('spielplatz').onclick = function(e){
     olMap.removeLayer(spielplatz);
   }
 };
-
 document.getElementById('sportplatz').onclick = function(e){
   if(this.checked==1){
     olMap.addLayer(sportplatz);
@@ -242,7 +215,6 @@ document.getElementById('sportplatz').onclick = function(e){
     olMap.removeLayer(sportplatz);
   }
 };
-
 document.getElementById('wlan').onclick = function(e){
   if(this.checked==1){
     olMap.addLayer(wlan);
@@ -250,7 +222,6 @@ document.getElementById('wlan').onclick = function(e){
     olMap.removeLayer(wlan);
   }
 };
-
 document.getElementById('citybike').onclick = function(e){
   if(this.checked==1){
     olMap.addLayer(citybike);
