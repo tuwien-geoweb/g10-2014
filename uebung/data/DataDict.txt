@@ -3,7 +3,6 @@ DIST_P_RA Bezirksbevölkerung
 POP_DENSI Bevölkerungsdichte
 RATE_MALE Anteil Männlich
 RATE_FEMA Anteil Weiblich
-SEX_RATIO Sex_Ratio
 RATE_NATI Anteil österr. Staatsbürger
 RATE_BORN Geburtenrate
 AVG_AGE_M Altersdurchschnitt Männlich
